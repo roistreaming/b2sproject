@@ -14,7 +14,7 @@ logger.setLevel(logging.DEBUG)
 @app.route("/model",methods=['POST'])
 def model():
     
-    model_output = is_suspicious(request.json())
+    model_output = is_suspicious(request.json)
     return model_output
 
 @app.route("/version")
