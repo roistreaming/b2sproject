@@ -34,7 +34,7 @@ class KafkaConsumerMessenger():
 
             # d[i] = (json.dumps(dict(msg.value), indent = 4))
             # requests.post(url=str(os.getenv("POST_TO_URL") + "/readMsg"), data=str(msg))
-            requests.post(url=str(os.getenv("POST_TO_URL") + "/model"), data=str(msg.value))
+            requests.post(url=str(os.getenv("POST_TO_URL") + "/start"), data=str(msg.value))
             
         
 if __name__ == "__main__":
