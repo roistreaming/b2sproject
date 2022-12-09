@@ -5,7 +5,7 @@ import json
 import requests
 import os
 
-os.environ['POST_TO_URL'] = 'http://0.0.0.0:8080'
+os.environ['POST_TO_URL'] = 'http://0.0.0.0:8081'
 
 serverip = "10.128.11.250"  # Change to Server IP
 serverport = "9092"
@@ -30,10 +30,11 @@ class KafkaConsumerMessenger():
             )
         
         for msg in consumer:
-            print(msg)
+            # print(msg)
 
             # d[i] = (json.dumps(dict(msg.value), indent = 4))
-            # requests.post(url=str(os.getenv("POST_TO_URL") + "/readMsg"), data=msg)
+            # requests.post(url=str(os.getenv("POST_TO_URL") + "/readMsg"), data=str(msg))
+            requests.post(url=str(os.getenv("POST_TO_URL") + "/model"), data=str(msg.value))
             
         
 if __name__ == "__main__":
