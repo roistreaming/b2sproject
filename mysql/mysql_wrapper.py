@@ -21,7 +21,7 @@ cnx = sql_connect('10.26.194.22','b2s','b2suser','ROI2022cb')
 @app.route("/demo",methods=['GET'])
 def demoget():
   returnstring = 'demo - GET received'
-  s_msg = str(request.args.get('msg'))
+  s_msg = request.args.get('msg')
   returnstring = sql_enrich(s_msg, cnx)
   return returnstring
 
@@ -30,7 +30,7 @@ def demoget():
 @app.route("/demo",methods=['POST'])
 def demopost():
   returnstring = "demo - POST received\n"
-  s_msg = str(request.args.get('msg'))
+  s_msg = request.args.get('msg')
   returnstring = sql_enrich(s_msg, cnx)
   return returnstring
 
