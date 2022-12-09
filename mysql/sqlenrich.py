@@ -21,8 +21,8 @@ def sql_enrich(msg_sku,cnx):
     # msg_dict['stock_qty'] = stock_qty
     # enriched_json = json.dumps(msg_dict)
     cursor.close()    
-   
-    return stock_qty
+    print(stock_qty)
+    return str(stock_qty)
 ### Unit Test
 ### Want to leave connection open while messages are processed
 # cnx = sql_connect('10.26.194.22','b2s','b2suser','ROI2022cb')
