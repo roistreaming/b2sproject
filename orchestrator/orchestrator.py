@@ -1,5 +1,7 @@
 from flask import Flask
+from flask import request
 from waitress import serve
+from ..model.model import is_suspicious
 import os
 import logging
 import random
@@ -8,10 +10,12 @@ app = Flask(__name__)
 logger = logging.getLogger('waitress')
 logger.setLevel(logging.DEBUG)
 
-@app.route("/")
-def hello():
-  randomnum = random.randint(1, 100000000)/100
-  return "Your Random Number is " + str(randomnum) + "!\n"
+
+@app.route("/model",methods=['POST'])
+def model():
+    
+    model_output = is_suspicious(request.json())
+    return model_output
 
 @app.route("/version")
 def version():
