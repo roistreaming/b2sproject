@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import request
 from waitress import serve
-from ..model.model import is_suspicious
+from model import is_suspicious
 import os
 import logging
 import random
@@ -10,11 +10,11 @@ app = Flask(__name__)
 logger = logging.getLogger('waitress')
 logger.setLevel(logging.DEBUG)
 
-
 @app.route("/model",methods=['POST'])
 def model():
     
     model_output = is_suspicious(request.json)
+    print(model_output)
     return model_output
 
 @app.route("/version")
